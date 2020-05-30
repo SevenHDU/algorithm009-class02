@@ -1,5 +1,6 @@
 /**
- * // Definition for a Node.
+// N 叉树的前序遍历 
+* // Definition for a Node.
  * function Node(val, children) {
  *    this.val = val;
  *    this.children = children;
