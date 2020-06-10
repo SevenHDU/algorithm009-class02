@@ -49,4 +49,4 @@ def divide_conquer(problem, param1, param2, ...):
 ```
 
 ## 刷题进度
-坚持完成每日一题，以及课后习题 达标
+坚持完成每日一题，以及课后习题 达成！
