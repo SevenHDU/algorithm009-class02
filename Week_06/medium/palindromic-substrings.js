@@ -11,13 +11,11 @@ var countSubstrings = function(s) {
     let count = 0;
 
     // 中心扩散法，找出中心点，朝两边扩散，中心点可能是1个，也可能是2个
-    for (let center = 0; center < 2 * s.length - 1; center++) {
-        let left = Math.floor(center / 2);
-        let right = left + center % 2;
+    for (let center = 0; center < s.length * 2 - 1; center++) {
+        let left =  Math.floor(center / 2);
+        let right = left + (center % 2  === 0 ? 0 : 1 );
 
-        while (left >= 0 && right < s.length && s[left] === s[right]) {
-            left--;
-            right++;
+        while (left >= 0 && right < s.length && s[left--] === s[right++]) {
             count++;
         }
     }
