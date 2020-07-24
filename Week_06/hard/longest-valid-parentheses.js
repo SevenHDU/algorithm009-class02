@@ -15,6 +15,7 @@ var longestValidParentheses = function(s) {
         return 0;
     }
 
+    // 状态定义：dp[i] 以索引 i 结尾的字符的最大有效括号树
     const dp = Array(length).fill(0);
 
     for (let i = 1; i < length; i++) {
