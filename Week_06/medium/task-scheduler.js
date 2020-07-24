@@ -5,24 +5,26 @@
  * @return {number}
  */
 var leastInterval = function(tasks, n) {
-    let map = new Map();
-    // 遍历计算所有任务出现的次数
+    const arr = Array(26).fill(0);
+    
+    // 记录各个任务的执行个数
     for (let i = 0; i < tasks.length; i++) {
-        if (map.has(tasks[i])) {
-            map.set(tasks[i], map.get(tasks[i])+1);
-        } else {
-            map.set(tasks[i], 1);
-        }
+        const key = tasks[i].charCodeAt() - 'A'.charCodeAt();
+        arr[key]++;
     }
-    // 对次数进行递减排序
-    let arr = [...map.values()].sort((a,b) => b-a);
-    let maxNum = arr[0];
-    let res = (maxNum - 1) * (n + 1) + 1;
+
+    // 根据任务数量大小，倒序排列
+    arr.sort((a, b ) => b - a);
+    let maxCount = arr[0];
+    let max = (n + 1) * (maxCount - 1) + 1;
     let i = 1;
-    while (i < arr.length && arr[i] === maxNum) {
-        // 如果存在其他任务的出现次数跟最大次数相同
-        res++;
+
+    // 如果有相同的最大值的任务，则时间需要 + 1;
+    while (i < tasks.length && arr[i] === maxCount) {
+        max++;
         i++;
     }
-    return Math.max(tasks.length, res)
+
+    // 如果任务种类比较多，冷却时间无法执行完，最任务数量就是最大耗时量
+    return Math.max(tasks.length, max);
 };
