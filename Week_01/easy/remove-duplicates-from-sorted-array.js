@@ -1,3 +1,4 @@
+// 26. 删除排序数组中的重复项
 //  删除排序数组中的重复项
 var removeDuplicates = function(nums) {
     if (!nums || nums.length === 1) {
